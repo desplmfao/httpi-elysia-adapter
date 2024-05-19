@@ -26,8 +26,7 @@
       "discord-verify": "^1.2.0",
       "elysia": "^1.0.20",
       "form-data-encoder": "^4.0.2",
-      "formdata-node": "^6.0.3",
-      "ts-case-convert": "^2.0.7"
+      "formdata-node": "^6.0.3"
    },
    "devDependencies": {
       "@types/bun": "latest",
