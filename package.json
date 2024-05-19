@@ -2,7 +2,7 @@
    "name": "httpi-elysia-adapter",
    "description": "Elysia adapter for httpi",
    "private": false,
-   "version": "1.0.3",
+   "version": "0.0.0",
    "type": "module",
    "author": {
       "name": "desp",

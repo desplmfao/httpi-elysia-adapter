@@ -2,7 +2,7 @@
    "name": "@httpi/adapter-elysia",
    "description": "Elysia adapter for httpi",
    "license": "CC0-1.0",
-   "version": "1.0.3",
+   "version": "1.0.4",
    "type": "module",
    "main": "dist/esm/src/index.js",
    "exports": {
