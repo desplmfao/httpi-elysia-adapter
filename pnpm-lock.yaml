@@ -30,37 +30,6 @@ importers:
         specifier: latest
         version: 5.4.5
 
-  examples/simple:
-    dependencies:
-      '@discordeno/rest':
-        specifier: 19.0.0-next.d0d810d
-        version: 19.0.0-next.d0d810d
-      '@httpi/adapter-elysia':
-        specifier: workspace:*
-        version: link:../../packages/adapter
-      '@httpi/client':
-        specifier: ^1.0.3
-        version: 1.0.3
-      discord-api-types:
-        specifier: ^0.37.84
-        version: 0.37.84
-      dotenv-cli:
-        specifier: ^7.4.2
-        version: 7.4.2
-      elysia:
-        specifier: ^1.0.20
-        version: 1.0.20(@sinclair/typebox@0.32.30)(typescript@5.4.5)
-      typescript:
-        specifier: ^5.4.5
-        version: 5.4.5
-    devDependencies:
-      '@types/node':
-        specifier: ^20.12.12
-        version: 20.12.12
-      tsconfig:
-        specifier: workspace:*
-        version: link:../../packages/tsconfig
-
   packages/adapter:
     dependencies:
       discord-api-types:
@@ -172,15 +141,6 @@ packages:
 
   '@changesets/write@0.3.1':
     resolution: {integrity: sha512-SyGtMXzH3qFqlHKcvFY2eX+6b0NGiFcNav8AFsYwy5l8hejOeoeTDemu5Yjmke2V5jpzY+pBvM0vCCQ3gdZpfw==}
-
-  '@discordeno/rest@19.0.0-next.d0d810d':
-    resolution: {integrity: sha512-T9skgn5C3lp1sp8RIwzI6bmxEeM4DY7XdDCa3z95dksIkeavMnYdkOatrEoicuJvIEZ7JJFGc3f5wHc0ziosbw==}
-
-  '@discordeno/types@19.0.0-next.d0d810d':
-    resolution: {integrity: sha512-7w2EX5n1Hir/3XSPMJj7/x9fYOrOACQxeiDAQ3A5sg9eaKzuExe+2fNVGk2OA169VN1GW3rRDX0jvttefLJ+Yg==}
-
-  '@discordeno/utils@19.0.0-next.d0d810d':
-    resolution: {integrity: sha512-XSqkKFcRcCG1Sp+7eFbeCC02w9oeegKgbjt5bKRNV2GnIBV/LOjqxlppdhgies8ZujpRxdrOgdl05cYfVit1eA==}
 
   '@eslint-community/eslint-utils@4.4.0':
     resolution: {integrity: sha512-1/sA4dwrzBAyeUoQ6oxahHKmrZvsnLCg4RfxW3ZFGGmQkSNQPFNLV9CUEFQP1x9EYXHTo5p6xdhZM1Ne9p/AfA==}
@@ -546,18 +506,6 @@ packages:
   doctrine@3.0.0:
     resolution: {integrity: sha512-yS+Q5i3hBf7GBkd4KG8a7eBNNWNGLTaEwwYWUijIYM7zrlYDM0BFXHjjPWlWZ1Rg7UaddZeIDmi9jF3HmqiQ2w==}
     engines: {node: '>=6.0.0'}
-
-  dotenv-cli@7.4.2:
-    resolution: {integrity: sha512-SbUj8l61zIbzyhIbg0FwPJq6+wjbzdn9oEtozQpZ6kW2ihCcapKVZj49oCT3oPM+mgQm+itgvUQcG5szxVrZTA==}
-    hasBin: true
-
-  dotenv-expand@10.0.0:
-    resolution: {integrity: sha512-GopVGCpVS1UKH75VKHGuQFqS1Gusej0z4FyQkPdwjil2gNIv+LNsqBlboOzpJFZKVT95GkCyWJbBSdFEFUWI2A==}
-    engines: {node: '>=12'}
-
-  dotenv@16.4.5:
-    resolution: {integrity: sha512-ZmdL2rui+eB2YwhsWzjInR8LldtZHGDoQ1ugH85ppHKwpUHL7j7rN0Ti9NCnGiQbhaZ11FpR+7ao1dNsmduNUg==}
-    engines: {node: '>=12'}
 
   elysia@1.0.20:
     resolution: {integrity: sha512-V05qRRiLiHgyOKnLpQcTxkd3c84b8TtRdYA4Iv5usF2TBOiPoXg0GS2oTOyUp8wCxElGihvW2mxm1XchwdSuvw==}
@@ -1087,9 +1035,6 @@ packages:
     resolution: {integrity: sha512-Q4r8ghd80yhO/0j1O3B2BjweX3fiHg9cdOwjJd2J76Q135c+NDxGCqdYKQ1SKBuFfgWbAUzBfvYjPUEeNgqN1A==}
     engines: {node: '>= 6'}
 
-  minimist@1.2.8:
-    resolution: {integrity: sha512-2yyAR8qBkN3YuheJanUpWC5U3bb5osDywNB8RzDVlDwDHbocAJveqqj1u8+SVD7jkWT4yvsHCpWqqWqAxb0zCA==}
-
   mixme@0.5.10:
     resolution: {integrity: sha512-5H76ANWinB1H3twpJ6JY8uvAtpmFvHNArpilJAjXRKXSDDLPIMoZArw5SH0q9z+lLs8IrMw7Q2VWpWimFKFT1Q==}
     engines: {node: '>= 8.0.0'}
@@ -1460,9 +1405,6 @@ packages:
     engines: {node: '>=8.0.0'}
     hasBin: true
 
-  tweetnacl@1.0.3:
-    resolution: {integrity: sha512-6rt+RN7aOi1nGMyC4Xa5DdYiukl2UWCbcJft7YhxReBGQD7OAM8Pbxw6YMo4r2diNEA8FEmu32YOn9rhaiE5yw==}
-
   type-check@0.4.0:
     resolution: {integrity: sha512-XleUoc9uwGXqjWwXaUTZAmzMcFZ5858QA2vvx1Ur5xIcixXIP+8LnFDgRplU30us6teqdlskFfu+ae4K79Ooew==}
     engines: {node: '>= 0.8.0'}
@@ -1761,19 +1703,6 @@ snapshots:
       fs-extra: 7.0.1
       human-id: 1.0.2
       prettier: 2.8.8
-
-  '@discordeno/rest@19.0.0-next.d0d810d':
-    dependencies:
-      '@discordeno/types': 19.0.0-next.d0d810d
-      '@discordeno/utils': 19.0.0-next.d0d810d
-      dotenv: 16.4.5
-
-  '@discordeno/types@19.0.0-next.d0d810d': {}
-
-  '@discordeno/utils@19.0.0-next.d0d810d':
-    dependencies:
-      '@discordeno/types': 19.0.0-next.d0d810d
-      tweetnacl: 1.0.3
 
   '@eslint-community/eslint-utils@4.4.0(eslint@8.56.0)':
     dependencies:
@@ -2192,17 +2121,6 @@ snapshots:
   doctrine@3.0.0:
     dependencies:
       esutils: 2.0.3
-
-  dotenv-cli@7.4.2:
-    dependencies:
-      cross-spawn: 7.0.3
-      dotenv: 16.4.5
-      dotenv-expand: 10.0.0
-      minimist: 1.2.8
-
-  dotenv-expand@10.0.0: {}
-
-  dotenv@16.4.5: {}
 
   elysia@1.0.20(@sinclair/typebox@0.32.30)(typescript@5.4.5):
     dependencies:
@@ -2837,8 +2755,6 @@ snapshots:
       is-plain-obj: 1.1.0
       kind-of: 6.0.3
 
-  minimist@1.2.8: {}
-
   mixme@0.5.10: {}
 
   ms@2.1.2: {}
@@ -3199,8 +3115,6 @@ snapshots:
       strip-ansi: 6.0.1
       wcwidth: 1.0.1
       yargs: 17.7.2
-
-  tweetnacl@1.0.3: {}
 
   type-check@0.4.0:
     dependencies:
