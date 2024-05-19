@@ -21,6 +21,10 @@ export default new Subcommand({
                   name: 'image.png',
                   data: image,
                },
+               {
+                  name: 'image2.png',
+                  data: image,
+               },
             ],
          },
       });
