@@ -9,9 +9,9 @@ export default new Subcommand({
       name: 'hello',
       description: 'Hey there!',
    },
-   execute({ respond }) {
+   async execute({ respond }) {
       const image = fs.readFileSync('./assets/httpi_transparent.png');
-      respond({
+      await respond({
          type: InteractionResponseType.ChannelMessageWithSource,
          data: {
             content: 'Hello world!',

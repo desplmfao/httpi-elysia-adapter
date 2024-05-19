@@ -68,6 +68,77 @@ importers:
         specifier: workspace:*
         version: link:../../packages/tsconfig
 
+  apps/example-discordeno:
+    dependencies:
+      '@discordeno/rest':
+        specifier: 19.0.0-next.d0d810d
+        version: 19.0.0-next.d0d810d
+      '@discordjs/core':
+        specifier: ^1.2.0
+        version: 1.2.0
+      '@discordjs/rest':
+        specifier: ^2.3.0
+        version: 2.3.0
+      '@httpi/adapter-elysia':
+        specifier: workspace:*
+        version: link:../../packages/adapter
+      '@httpi/client':
+        specifier: ^1.0.3
+        version: 1.0.3
+      dotenv-cli:
+        specifier: ^7.4.2
+        version: 7.4.2
+      elysia:
+        specifier: ^1.0.20
+        version: 1.0.20(@sinclair/typebox@0.32.30)(typescript@5.4.5)
+      typescript:
+        specifier: ^5.4.5
+        version: 5.4.5
+    devDependencies:
+      '@types/node':
+        specifier: ^20.12.12
+        version: 20.12.12
+      discord-api-types:
+        specifier: ^0.37.84
+        version: 0.37.84
+      tsconfig:
+        specifier: workspace:*
+        version: link:../../packages/tsconfig
+
+  apps/example-discordjs:
+    dependencies:
+      '@discordjs/core':
+        specifier: ^1.2.0
+        version: 1.2.0
+      '@discordjs/rest':
+        specifier: ^2.3.0
+        version: 2.3.0
+      '@httpi/adapter-elysia':
+        specifier: workspace:*
+        version: link:../../packages/adapter
+      '@httpi/client':
+        specifier: ^1.0.3
+        version: 1.0.3
+      dotenv-cli:
+        specifier: ^7.4.2
+        version: 7.4.2
+      elysia:
+        specifier: ^1.0.20
+        version: 1.0.20(@sinclair/typebox@0.32.30)(typescript@5.4.5)
+      typescript:
+        specifier: ^5.4.5
+        version: 5.4.5
+    devDependencies:
+      '@types/node':
+        specifier: ^20.12.12
+        version: 20.12.12
+      discord-api-types:
+        specifier: ^0.37.84
+        version: 0.37.84
+      tsconfig:
+        specifier: workspace:*
+        version: link:../../packages/tsconfig
+
   packages/adapter:
     dependencies:
       '@httpi/client':
@@ -194,6 +265,15 @@ packages:
 
   '@changesets/write@0.3.1':
     resolution: {integrity: sha512-SyGtMXzH3qFqlHKcvFY2eX+6b0NGiFcNav8AFsYwy5l8hejOeoeTDemu5Yjmke2V5jpzY+pBvM0vCCQ3gdZpfw==}
+
+  '@discordeno/rest@19.0.0-next.d0d810d':
+    resolution: {integrity: sha512-T9skgn5C3lp1sp8RIwzI6bmxEeM4DY7XdDCa3z95dksIkeavMnYdkOatrEoicuJvIEZ7JJFGc3f5wHc0ziosbw==}
+
+  '@discordeno/types@19.0.0-next.d0d810d':
+    resolution: {integrity: sha512-7w2EX5n1Hir/3XSPMJj7/x9fYOrOACQxeiDAQ3A5sg9eaKzuExe+2fNVGk2OA169VN1GW3rRDX0jvttefLJ+Yg==}
+
+  '@discordeno/utils@19.0.0-next.d0d810d':
+    resolution: {integrity: sha512-XSqkKFcRcCG1Sp+7eFbeCC02w9oeegKgbjt5bKRNV2GnIBV/LOjqxlppdhgies8ZujpRxdrOgdl05cYfVit1eA==}
 
   '@discordjs/collection@2.1.0':
     resolution: {integrity: sha512-mLcTACtXUuVgutoznkh6hS3UFqYirDYAg5Dc1m8xn6OvPjetnUlf/xjtqnnc47OwWdaoCQnHmHh9KofhD6uRqw==}
@@ -1556,6 +1636,9 @@ packages:
     engines: {node: '>=8.0.0'}
     hasBin: true
 
+  tweetnacl@1.0.3:
+    resolution: {integrity: sha512-6rt+RN7aOi1nGMyC4Xa5DdYiukl2UWCbcJft7YhxReBGQD7OAM8Pbxw6YMo4r2diNEA8FEmu32YOn9rhaiE5yw==}
+
   type-check@0.4.0:
     resolution: {integrity: sha512-XleUoc9uwGXqjWwXaUTZAmzMcFZ5858QA2vvx1Ur5xIcixXIP+8LnFDgRplU30us6teqdlskFfu+ae4K79Ooew==}
     engines: {node: '>= 0.8.0'}
@@ -1870,6 +1953,19 @@ snapshots:
       fs-extra: 7.0.1
       human-id: 1.0.2
       prettier: 2.8.8
+
+  '@discordeno/rest@19.0.0-next.d0d810d':
+    dependencies:
+      '@discordeno/types': 19.0.0-next.d0d810d
+      '@discordeno/utils': 19.0.0-next.d0d810d
+      dotenv: 16.4.5
+
+  '@discordeno/types@19.0.0-next.d0d810d': {}
+
+  '@discordeno/utils@19.0.0-next.d0d810d':
+    dependencies:
+      '@discordeno/types': 19.0.0-next.d0d810d
+      tweetnacl: 1.0.3
 
   '@discordjs/collection@2.1.0': {}
 
@@ -3400,6 +3496,8 @@ snapshots:
       strip-ansi: 6.0.1
       wcwidth: 1.0.1
       yargs: 17.7.2
+
+  tweetnacl@1.0.3: {}
 
   type-check@0.4.0:
     dependencies:

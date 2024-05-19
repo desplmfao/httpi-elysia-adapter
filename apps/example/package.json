@@ -5,8 +5,7 @@
    "version": "0.0.0",
    "main": "src/http/clusters.ts",
    "dependencies": {
-      "@discordjs/core": "^1.2.0",
-      "@discordjs/rest": "^2.3.0",
+      "@discordeno/rest": "19.0.0-next.d0d810d",
       "@httpi/adapter-elysia": "workspace:*",
       "@httpi/client": "^1.0.3",
       "dotenv-cli": "^7.4.2",

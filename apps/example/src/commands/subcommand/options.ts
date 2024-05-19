@@ -19,11 +19,11 @@ export default new Subcommand({
          },
       ],
    },
-   autocomplete({ interaction, respond }) {
+   async autocomplete({ interaction, respond }) {
       const value = interaction.data.options[0].options[0].value;
       console.log('Autocomplete value', value);
 
-      respond({
+      await respond({
          type: InteractionResponseType.ApplicationCommandAutocompleteResult,
          data: {
             choices: [
@@ -39,11 +39,11 @@ export default new Subcommand({
          },
       });
    },
-   execute({ interaction, respond }) {
+   async execute({ interaction, respond }) {
       const value = interaction.data.options[0].options[0].value;
       console.log('Command value', value);
 
-      respond({
+      await respond({
          type: InteractionResponseType.ChannelMessageWithSource,
          data: {
             content: `This is a test subcommand. The given value is \`${value}\`.`,

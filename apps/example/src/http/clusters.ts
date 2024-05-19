@@ -23,7 +23,7 @@ for (let i = 0; i < childProcessCount; ++i) {
  */
 function createChildProcess() {
    const child = fork(workerFile);
-   // console.log(`A child has spawned with PID ${child.pid}.`);
+   console.log(`A child has spawned with PID ${child.pid}.`);
 
    // Listen for exit events
    child.on('exit', onExit);
