@@ -1,0 +1,6 @@
+{
+   "extends": "tsconfig/base.json",
+   // the eslint include fixes eslint issues
+   "include": ["*.ts", "./packages/eslint-config-custom/index.js"],
+   "exclude": ["node_modules"]
+}

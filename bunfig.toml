@@ -1,0 +1,6 @@
+logLevel = "info"
+
+[install]
+dev = true
+peer = true
+production = false

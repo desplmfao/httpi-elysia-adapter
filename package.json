@@ -1,0 +1,33 @@
+{
+   "name": "httpi-elysia-adapter",
+   "description": "Elysia adapter for httpi",
+   "private": false,
+   "version": "1.0.0",
+   "type": "module",
+   "author": {
+      "name": "desp",
+      "email": "me@desp.lol",
+      "url": "https://github.com/desplmfao"
+   },
+   "bugs": {
+      "url": "https://github.com/desplmfao/httpi-elysia-adapter/issues"
+   },
+   "workspaces": [
+      "apps/*",
+      "packages/*"
+   ],
+   "devDependencies": {
+      "eslint-config-custom": "workspace:*",
+      "prettier": "latest",
+      "tsconfig": "workspace:*",
+      "typescript": "latest"
+   },
+   "engines": {
+      "bun": "1.*.*"
+   },
+   "dependencies": {
+      "@types/bun": "^1.1.2",
+      "eslint": "8.57.0",
+      "pnpm": "^9.1.1"
+   }
+}
