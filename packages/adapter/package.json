@@ -16,6 +16,10 @@
       "email": "me@desp.lol",
       "url": "https://github.com/desplmfao"
    },
+   "homepage": "https://github.com/desplmfao/httpi-elysia-adapter",
+   "bugs": {
+      "url": "https://github.com/desplmfao/httpi-elysia-adapter/issues"
+   },
    "dependencies": {
       "@httpi/client": "^1.0.3",
       "discord-api-types": "^0.37.84",
