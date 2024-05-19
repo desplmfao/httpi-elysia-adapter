@@ -28,7 +28,6 @@
    },
    "devDependencies": {
       "@types/bun": "latest",
-      "@types/node": "latest",
-      "tsconfig": "workspace:*"
+      "@types/node": "latest"
    }
 }
