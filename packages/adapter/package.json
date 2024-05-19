@@ -2,7 +2,7 @@
    "name": "@httpi/adapter-elysia",
    "description": "Elysia adapter for httpi",
    "license": "CC0-1.0",
-   "version": "1.0.16",
+   "version": "1.0.17",
    "type": "module",
    "main": "dist/esm/src/index.js",
    "exports": {
@@ -21,11 +21,11 @@
       "url": "https://github.com/desplmfao/httpi-elysia-adapter/issues"
    },
    "dependencies": {
-      "@httpi/client": "^1.0.3",
       "discord-api-types": "^0.37.84",
       "elysia": "^1.0.20"
    },
    "devDependencies": {
+      "@httpi/client": "^1.0.3",
       "@types/bun": "latest",
       "@types/node": "latest"
    }
