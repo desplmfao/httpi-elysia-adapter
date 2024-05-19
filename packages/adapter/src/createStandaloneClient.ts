@@ -1,4 +1,5 @@
 import { default as Elysia } from 'elysia';
+
 import type { Events } from '@httpi/client';
 
 import { createAdapter } from './createAdapter';
