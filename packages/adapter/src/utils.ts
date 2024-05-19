@@ -15,6 +15,7 @@ export function createInteractionAttachmentFormData(
 
    const boundary =
       '----WebKitFormBoundary' + Math.random().toString(36).substring(2);
+   const disposition = `--${boundary}\r\nContent-Disposition: form-data;`;
    const formDataParts: Buffer[] = [];
    const messageAttachments: RESTAPIAttachment[] = [];
 
@@ -25,7 +26,7 @@ export function createInteractionAttachmentFormData(
 
       formDataParts.push(
          Buffer.from(
-            `--${boundary}\r\nContent-Disposition: form-data; name="files[${id}]"; filename="${attachment.name}"\r\nContent-Type: application/octet-stream\r\n\r\n`,
+            `${disposition} name="files[${id}]"; filename="${attachment.name}"\r\nContent-Type: application/octet-stream\r\n\r\n`,
          ),
          Buffer.from(attachment.data),
          Buffer.from('\r\n'),
@@ -34,15 +35,13 @@ export function createInteractionAttachmentFormData(
 
    formDataParts.unshift(
       Buffer.from(
-         `--${boundary}\r\nContent-Disposition: form-data; name="payload_json"\r\n\r\n${JSON.stringify(
-            {
-               type: message.type,
-               data: {
-                  ...data,
-                  attachments: messageAttachments,
-               },
+         `${disposition} name="payload_json"\r\n\r\n${JSON.stringify({
+            type: message.type,
+            data: {
+               ...data,
+               attachments: messageAttachments,
             },
-         )}\r\n`,
+         })}\r\n`,
       ),
    );
 
