@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-misused-promises */
 /* eslint-disable no-async-promise-executor */
-import { default as crypto } from 'node:crypto';
 
 import { type Context } from 'elysia';
 
@@ -10,9 +9,9 @@ import type {
    CustomAPIInteractionResponseCallbackData,
 } from '@httpi/client';
 
-import { verify } from 'discord-verify/node';
-
-import { createInteractionAttachmentFormData } from './utils';
+import verifyInteractionSignature, {
+   createInteractionAttachmentFormData,
+} from './utils';
 
 /**
  * Create an Elysia middleware for HTTP interactions
@@ -28,12 +27,11 @@ export function createAdapter(opts: { publicKey: string; events: Events }) {
 
       return new Promise(async (resolve) => {
          try {
-            const isValid = await verify(
-               JSON.stringify(interaction),
+            const isValid = verifyInteractionSignature(
+               opts.publicKey,
                signature,
                timestamp,
-               opts.publicKey,
-               crypto.webcrypto.subtle,
+               JSON.stringify(interaction),
             );
 
             if (!isValid) {
