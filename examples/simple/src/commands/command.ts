@@ -3,6 +3,7 @@ import { Command } from '@httpi/client';
 import {
    ApplicationIntegrationType,
    ButtonStyle,
+   ComponentType,
    InteractionContextType,
    InteractionResponseType,
 } from 'discord-api-types/v10';
