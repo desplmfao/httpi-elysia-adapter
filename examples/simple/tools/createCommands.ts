@@ -11,4 +11,5 @@ const result = await createCommands({
 });
 
 console.log(result);
+
 process.exit();

@@ -11,6 +11,7 @@ export default new Subcommand({
    },
    async execute({ respond }) {
       const image = fs.readFileSync('./assets/httpi_transparent.png');
+
       await respond({
          type: InteractionResponseType.ChannelMessageWithSource,
          data: {

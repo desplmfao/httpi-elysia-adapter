@@ -1,8 +1,8 @@
 import { Command } from '@httpi/client';
 
-import { ButtonStyle, ComponentType } from '@discordjs/core';
 import {
    ApplicationIntegrationType,
+   ButtonStyle,
    InteractionContextType,
    InteractionResponseType,
 } from 'discord-api-types/v10';
