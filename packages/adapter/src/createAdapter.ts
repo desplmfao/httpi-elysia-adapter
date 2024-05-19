@@ -1,38 +1,35 @@
-import crypto from 'node:crypto';
-import { Readable } from 'node:stream';
+/* eslint-disable @typescript-eslint/no-misused-promises */
+/* eslint-disable no-async-promise-executor */
+import { default as crypto } from 'node:crypto';
 
 import { type Context } from 'elysia';
 
 import type {
    BaseInteraction,
-   InteractionResponseAttachment,
    Events,
+   CustomAPIInteractionResponseCallbackData,
 } from '@httpi/client';
 
 import { verify } from 'discord-verify/node';
-import type { RESTAPIAttachment } from 'discord-api-types/v10';
 
-import { FormData } from 'formdata-node';
-import { FormDataEncoder } from 'form-data-encoder';
+import { createInteractionAttachmentFormData } from './utils';
 
 /**
- * Create a Elysia middleware for HTTP interactions
+ * Create an Elysia middleware for HTTP interactions
  * @param opts The public key and events
  * @returns The middleware
  */
 export function createAdapter(opts: { publicKey: string; events: Events }) {
    return async (ctx: Context) => {
-      // Validates if the interaction is coming from Discord
       const signature = ctx.request.headers.get('X-Signature-Ed25519');
       const timestamp = ctx.request.headers.get('X-Signature-Timestamp');
 
-      const body = await ctx.request.text();
+      const interaction = (await ctx.request.json()) as BaseInteraction;
 
-      try {
-         // eslint-disable-next-line @typescript-eslint/no-misused-promises, no-async-promise-executor
-         return await new Promise(async (resolve) => {
+      return new Promise(async (resolve) => {
+         try {
             const isValid = await verify(
-               body,
+               JSON.stringify(interaction),
                signature,
                timestamp,
                opts.publicKey,
@@ -44,81 +41,54 @@ export function createAdapter(opts: { publicKey: string; events: Events }) {
                   headers: { ...ctx.set.headers },
                   status: 401,
                };
-
                return resolve('Invalid signature');
             }
 
-            // Handles interactions
-            const interaction = JSON.parse(body) as BaseInteraction;
+            const eventHandler = opts.events[interaction.type];
+            if (!eventHandler) {
+               ctx.set = {
+                  headers: { ...ctx.set.headers },
+                  status: 400,
+               };
+               return resolve('Unknown interaction type');
+            }
 
-            return opts.events[interaction.type]?.execute({
+            const response = await eventHandler.execute({
                interaction,
                user: interaction.member?.user ?? interaction.user,
                // eslint-disable-next-line @typescript-eslint/require-await
                respond: async (message) => {
-                  // @ts-expect-error If message.data.attachments is a value, the message has attachments
-                  if (message?.data?.attachments) {
-                     // @ts-expect-error Create the form data
-                     const attachments = message?.data
-                        ?.attachments as InteractionResponseAttachment[];
-                     const formData = new FormData();
+                  const data =
+                     // @ts-expect-error
+                     message?.data as CustomAPIInteractionResponseCallbackData;
 
-                     // Create an updated message attachments object
-                     const messageAttachments: RESTAPIAttachment[] = [];
-                     for (let id = 0; id < attachments.length; ++id) {
-                        messageAttachments.push({
-                           id,
-                           filename: attachments[id]?.name,
-                        });
-                     }
-
-                     // Append the JSON body
-                     formData.append(
-                        'payload_json',
-                        JSON.stringify({
-                           type: message.type,
-                           data: {
-                              // @ts-expect-error
-                              ...message.data,
-                              attachments: messageAttachments,
-                           },
-                        }),
+                  if (data.attachments) {
+                     const formData = createInteractionAttachmentFormData(
+                        message,
+                        data,
                      );
+                     if (formData == null) return resolve('Error');
 
-                     // Append the files
-                     for (let i = 0; i < attachments.length; ++i) {
-                        formData.append(
-                           `files[${i}]`,
-                           new Blob([attachments[i]?.data]),
-                        );
-                     }
-
-                     // Create the encoder and readable
-                     const encoder = new FormDataEncoder(formData);
-                     const readable = Readable.from(encoder);
-
-                     // Sets the correct headers
                      ctx.set = {
                         // @ts-expect-error
                         headers: {
                            ...ctx.set.headers,
-                           'content-type': encoder.headers['content-type'],
+                           'content-type': formData.headers['content-type'],
                         },
                      };
 
-                     // Responds with attachments (multipart/form-data)
-                     return resolve(readable);
+                     return resolve(formData.readable);
                   }
 
-                  // Responds normally (application/json)
                   return resolve(message);
                },
             });
-         });
-      } catch (err) {
-         console.error(err);
 
-         return 'Error';
-      }
+            return resolve(response);
+         } catch (err) {
+            console.error(err);
+            return resolve('Error');
+         }
+      });
    };
 }
