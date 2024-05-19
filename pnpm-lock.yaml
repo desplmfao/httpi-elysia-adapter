@@ -41,6 +41,9 @@ importers:
       '@httpi/client':
         specifier: ^1.0.3
         version: 1.0.3
+      discord-api-types:
+        specifier: ^0.37.84
+        version: 0.37.84
       dotenv-cli:
         specifier: ^7.4.2
         version: 7.4.2
@@ -54,9 +57,6 @@ importers:
       '@types/node':
         specifier: ^20.12.12
         version: 20.12.12
-      discord-api-types:
-        specifier: ^0.37.84
-        version: 0.37.84
       tsconfig:
         specifier: workspace:*
         version: link:../../packages/tsconfig

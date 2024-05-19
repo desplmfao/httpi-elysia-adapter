@@ -8,13 +8,13 @@
       "@discordeno/rest": "19.0.0-next.d0d810d",
       "@httpi/adapter-elysia": "workspace:*",
       "@httpi/client": "^1.0.3",
+      "discord-api-types": "^0.37.84",
       "dotenv-cli": "^7.4.2",
       "elysia": "^1.0.20",
       "typescript": "^5.4.5"
    },
    "devDependencies": {
       "@types/node": "^20.12.12",
-      "discord-api-types": "^0.37.84",
       "tsconfig": "workspace:*"
    }
 }
