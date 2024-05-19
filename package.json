@@ -2,7 +2,7 @@
    "name": "httpi-elysia-adapter",
    "description": "Elysia adapter for httpi",
    "private": false,
-   "version": "1.0.0",
+   "version": "1.0.3",
    "type": "module",
    "author": {
       "name": "desp",
@@ -20,14 +20,18 @@
       "eslint-config-custom": "workspace:*",
       "prettier": "latest",
       "tsconfig": "workspace:*",
-      "typescript": "latest"
+      "typescript": "latest",
+      "pnpm": "^9.1.1"
+   },
+   "dependencies": {
+      "@changesets/cli": "^2.27.2",
+      "@types/bun": "^1.1.2",
+      "eslint": "8.57.0"
    },
    "engines": {
       "bun": "1.*.*"
    },
-   "dependencies": {
-      "@types/bun": "^1.1.2",
-      "eslint": "8.57.0",
-      "pnpm": "^9.1.1"
+   "scripts": {
+      "pub": "bun run.ts \"packages/adapter\" build && changeset version && changeset publish"
    }
 }
