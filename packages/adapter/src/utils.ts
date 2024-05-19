@@ -8,6 +8,16 @@ import type {
 
 import type { RESTAPIAttachment } from 'discord-api-types/v10';
 
+/**
+ * Creates a form data object for interaction attachments.
+ *
+ * This function generates a `multipart/form-data` payload for the attachments included in the interaction response.
+ * It returns a readable stream of the form data and the appropriate headers.
+ *
+ * @param message - The interaction response message.
+ * @param data - The callback data for the interaction response.
+ * @returns An object containing a readable stream and headers for the form data, or undefined if there are no attachments.
+ */
 export function createInteractionAttachmentFormData(
    message: CustomAPIInteractionResponse,
    data: CustomAPIInteractionResponseCallbackData,
