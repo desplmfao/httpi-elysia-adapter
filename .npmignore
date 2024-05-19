@@ -8,4 +8,6 @@ yarn.lock
 __test__
 
 tsconfig.json
+tsconfig.*.json
 tsconfig.tsbuildinfo
+tsconfig.*.tsbuildinfo
