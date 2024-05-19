@@ -10,14 +10,7 @@ import type { RESTAPIAttachment } from 'discord-api-types/v10';
 export function createInteractionAttachmentFormData(
    message: CustomAPIInteractionResponse,
    data: CustomAPIInteractionResponseCallbackData,
-):
-   | {
-        readable: Readable;
-        headers: {
-           'content-type': string;
-        };
-     }
-   | undefined {
+): { readable: Readable; headers: { 'content-type': string } } | undefined {
    if (!data.attachments || data.attachments.length === 0) return;
 
    const boundary =
@@ -25,14 +18,11 @@ export function createInteractionAttachmentFormData(
    const formDataParts: Buffer[] = [];
    const messageAttachments: RESTAPIAttachment[] = [];
 
-   for (const index in data.attachments) {
-      if (Object.prototype.hasOwnProperty.call(data.attachments, index)) {
-         const id = parseInt(index);
-         const attachment = data.attachments[id];
-
+   for (const [id, attachment] of data.attachments.entries()) {
+      if (attachment) {
          messageAttachments.push({
-            id,
-            filename: attachment?.name,
+            id: id,
+            filename: attachment.name,
          });
       }
    }
@@ -51,19 +41,17 @@ export function createInteractionAttachmentFormData(
 
    formDataParts.push(payloadJson);
 
-   for (const index in data.attachments) {
-      if (Object.prototype.hasOwnProperty.call(data.attachments, index)) {
-         const id = parseInt(index);
-         const attachment = data.attachments[id];
+   for (const [id, attachment] of data.attachments.entries()) {
+      if (attachment) {
          const fileHeader = Buffer.from(
-            `--${boundary}\r\nContent-Disposition: form-data; name="files[${id}]"; filename="${attachment?.name}"\r\nContent-Type: application/octet-stream\r\n\r\n`,
+            `--${boundary}\r\nContent-Disposition: form-data; name="files[${id}]"; filename="${attachment.name}"\r\nContent-Type: application/octet-stream\r\n\r\n`,
          );
          const fileFooter = Buffer.from('\r\n');
 
          // Combine file header, data, and footer
          const fileData = Buffer.concat([
             fileHeader,
-            Buffer.from(attachment?.data),
+            Buffer.from(attachment.data),
             fileFooter,
          ]);
 
