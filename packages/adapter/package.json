@@ -26,7 +26,6 @@
    },
    "devDependencies": {
       "@httpi/client": "^1.0.3",
-      "@types/bun": "latest",
       "@types/node": "latest"
    },
    "engines": {
