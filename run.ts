@@ -16,7 +16,7 @@ export type Target = (typeof targets)[number];
 
 const commands_action = {
    lint: `bunx eslint "./**/*.ts"`,
-   build: 'bunx --bun tsc --project tsconfig.esm.json',
+   build: '',
    start: 'bun src/index.ts',
 } as const;
 
@@ -25,8 +25,8 @@ const commands_mode_start = {
 } as const;
 
 const commands_mode_build = {
-   esm: commands_action['build'],
-   cjs: 'bunx --bun tsc --project tsconfig.esm.json',
+   esm: 'bunx --bun tsc --project tsconfig.esm.json',
+   cjs: 'bunx --bun tsc --project tsconfig.cjs.json',
 } as const;
 
 const [cwd, action, mode] = main_args as [
@@ -49,19 +49,19 @@ let node_env: 'development' | 'production' | 'testing' = 'production';
          break;
 
       case 'build':
-         if (!(targets.indexOf(main_args[2] as Target) > -1))
-            throw new Error(
-               `${main_args[2]} is not a valid target. \nchoose once from:\n${targets.join(', ')}`,
-            );
-
          switch (mode) {
             case 'cjs':
                cmd = commands_mode_build.cjs;
                break;
 
-            default:
+            case 'esm':
                cmd = commands_mode_build.esm;
                break;
+
+            default: {
+               cmd = `${commands_mode_build.esm} && ${commands_mode_build.cjs}`;
+               break;
+            }
          }
 
          break;
