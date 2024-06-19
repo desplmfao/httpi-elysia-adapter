@@ -3,12 +3,14 @@
    "type": "module",
    "private": true,
    "version": "0.0.0",
-   "main": "src/http/clusters.ts",
+   "main": "src/server.ts",
+   "scripts": {
+      "register": "bun src/register.ts"
+   },
    "dependencies": {
-      "@discordeno/rest": "19.0.0-next.d0d810d",
-      "@httpi/adapter-elysia": "../../packages/adapter",
-      "@httpi/client": "^1.0.3",
-      "discord-api-types": "^0.37.84",
+      "@httpi/adapter-elysia": "workspace:*",
+      "@httpi/client": "^1.0.7",
+      "discord-api-types": "^0.37.87",
       "elysia": "^1.0.20"
    },
    "devDependencies": {

@@ -1,0 +1,105 @@
+{
+   "$schema": "https://biomejs.dev/schemas/1.7.3/schema.json",
+   "organizeImports": {
+      "enabled": true
+   },
+   "files": {
+      "ignore": ["dist/*"]
+   },
+   "linter": {
+      "enabled": true,
+      "rules": {
+         "recommended": true,
+         "correctness": {
+            "noChildrenProp": "error",
+            "noConstAssign": "error",
+            "noConstantCondition": "error",
+            "noConstructorReturn": "error",
+            "noEmptyCharacterClassInRegex": "error",
+            "noEmptyPattern": "error",
+            "noGlobalObjectCalls": "error",
+            "noInnerDeclarations": "error",
+            "noInvalidConstructorSuper": "error",
+            "noInvalidNewBuiltin": "error",
+            "noInvalidUseBeforeDeclaration": "error",
+            "noNewSymbol": "error",
+            "noNonoctalDecimalEscape": "error",
+            "noPrecisionLoss": "error",
+            "noRenderReturnValue": "error",
+            "noSelfAssign": "error",
+            "noSetterReturn": "error",
+            "noStringCaseMismatch": "error",
+            "noSwitchDeclarations": "error",
+            "noUndeclaredVariables": "error",
+            "noUnnecessaryContinue": "error",
+            "noUnreachable": "error",
+            "noUnreachableSuper": "error",
+            "noUnsafeFinally": "error",
+            "noUnsafeOptionalChaining": "error",
+            "noUnusedImports": "error",
+            "noUnusedLabels": "error",
+            "noUnusedPrivateClassMembers": "error",
+            "noUnusedVariables": "error",
+            "noVoidElementsWithChildren": "error",
+            "noVoidTypeReturn": "off",
+            "useExhaustiveDependencies": "error",
+            "useHookAtTopLevel": "error",
+            "useIsNan": "error",
+            "useJsxKeyInIterable": "error",
+            "useValidForDirection": "warn",
+            "useYield": "error"
+         },
+         "complexity": {
+            "noBannedTypes": "error",
+            "noEmptyTypeParameters": "error",
+            "noExcessiveCognitiveComplexity": "off",
+            "noExcessiveNestedTestSuites": "error",
+            "noExtraBooleanCast": "error",
+            "noForEach": "error",
+            "noMultipleSpacesInRegularExpressionLiterals": "error",
+            "noStaticOnlyClass": "error",
+            "noThisInStatic": "warn",
+            "noUselessCatch": "warn",
+            "noUselessConstructor": "error",
+            "noUselessEmptyExport": "warn",
+            "noUselessFragments": "error",
+            "noUselessLabel": "error",
+            "noUselessLoneBlockStatements": "error",
+            "noUselessRename": "error",
+            "noUselessSwitchCase": "error",
+            "noUselessTernary": "error",
+            "noUselessThisAlias": "error",
+            "noUselessTypeConstraint": "error",
+            "noVoid": "error",
+            "noWith": "error",
+            "useArrowFunction": "error",
+            "useFlatMap": "error",
+            "useLiteralKeys": "off",
+            "useOptionalChain": "error",
+            "useRegexLiterals": "error",
+            "useSimpleNumberKeys": "error",
+            "useSimplifiedLogicExpression": "error"
+         },
+         "style": {
+            "noParameterAssign": "off"
+         }
+      }
+   },
+   "formatter": {
+      "enabled": true,
+      "indentStyle": "space",
+      "indentWidth": 3,
+      "lineWidth": 100
+   },
+   "javascript": {
+      "formatter": {
+         "quoteStyle": "single"
+      }
+   },
+   "json": {
+      "parser": {
+         "allowComments": true,
+         "allowTrailingCommas": false
+      }
+   }
+}
